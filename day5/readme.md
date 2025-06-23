@@ -97,6 +97,38 @@ __global__ void sgemm_global_mem_coalesce(int M, int N, int K, float alpha,
 }
 
 ```
+# performance 
+```bash
 
+# naive
+dimensions(m=n=k) 128, alpha: 0.5, beta: 3
+Average elapsed time: (0.000098) s, performance: (   42.6) GFLOPS. size: (128).
+dimensions(m=n=k) 256, alpha: 0.5, beta: 3
+Average elapsed time: (0.000688) s, performance: (   48.8) GFLOPS. size: (256).
+dimensions(m=n=k) 512, alpha: 0.5, beta: 3
+Average elapsed time: (0.005357) s, performance: (   50.1) GFLOPS. size: (512).
+dimensions(m=n=k) 1024, alpha: 0.5, beta: 3
+Average elapsed time: (0.041117) s, performance: (   52.2) GFLOPS. size: (1024).
+dimensions(m=n=k) 2048, alpha: 0.5, beta: 3
+Average elapsed time: (0.310197) s, performance: (   55.4) GFLOPS. size: (2048).
+
+
+# memory coalescing
+Running kernel 2 on device 0.
+Max size: 4096
+dimensions(m=n=k) 128, alpha: 0.5, beta: 3
+Average elapsed time: (0.000017) s, performance: (  248.7) GFLOPS. size: (128).
+dimensions(m=n=k) 256, alpha: 0.5, beta: 3
+Average elapsed time: (0.000082) s, performance: (  406.7) GFLOPS. size: (256).
+dimensions(m=n=k) 512, alpha: 0.5, beta: 3
+Average elapsed time: (0.000536) s, performance: (  501.0) GFLOPS. size: (512).
+dimensions(m=n=k) 1024, alpha: 0.5, beta: 3
+Average elapsed time: (0.005251) s, performance: (  408.9) GFLOPS. size: (1024).
+dimensions(m=n=k) 2048, alpha: 0.5, beta: 3
+Average elapsed time: (0.042102) s, performance: (  408.1) GFLOPS. size: (2048).
+dimensions(m=n=k) 4096, alpha: 0.5, beta: 3
+Average elapsed time: (0.340573) s, performance: (  403.6) GFLOPS. size: (4096).
+
+```
 # conclusion
 - the row is fixed, the column is contiguous in memory. gpu can load 32B/64B/128B in one time. 32*float = 128B. so if its contiguous in memory, it only can load memory once.
