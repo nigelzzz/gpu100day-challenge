@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readme.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="day12">day12</h1>
+<ul>
+<li>hadamard core</li>
+<li>what is hadamard matrix
+<ul>
+<li>matrix 裡面都是 1 or -1</li>
+<li>任意兩個 row 互相正交 ( orthogonal ).
+<img src="image-5.png" alt="alt text">
+ref: https://en.wikipedia.org/wiki/Hadamard_matrix#:~:text=In%20mathematics%2C%20an%20Hadamard%20matrix%2C%20named%20after,hold%20for%20columns%20as%20well%20as%20rows.</li>
+</ul>
+</li>
+</ul>
+<p>ref: https://ocw.nycu.edu.tw/?post_type=course_page&amp;p=34624</p>
+<ul>
+<li>
+<p>simple quantize vs hadmard quantize</p>
+<ul>
+<li>simple
+<img src="image-1.png" alt="zzz"></li>
+<li>hadamard
+<img src="image-2.png" alt="alt text"></li>
+</ul>
+</li>
+<li>
+<p>結果
+<img src="image-3.png" alt="alt text"></p>
+<ul>
+<li>dimension 越大, 越極端的 outlier, 旋轉帶來的量化更明顯</li>
+</ul>
+</li>
+<li>
+<p>背景: quarot, spin quant, flashatten3????? 都會用到 FWHT, 主要用途是透過 hadamard matrix 做旋轉, 保留 outlier, 讓 quantize 後 的 ppl 降低.
+https://neurips.cc/virtual/2024/poster/94328</p>
+</li>
+</ul>
+<p><img src="image.png" alt="alt text"></p>
+<ul>
+<li>
+<p>fwht: (fast walsh-hadamard transform), 類似 fft, 但不用複雜數, 只有 +/-, 主要用在 hadamard matrix 的運算. O(n log n)</p>
+<ul>
+<li><img src="image-7.png" alt="alt text"></li>
+<li>example: <img src="image-6.png" alt="alt text"></li>
+</ul>
+</li>
+<li>
+<p>hadamard_transform_cuda</p>
+</li>
+</ul>
+<pre class="hljs"><code><div>// a 4x2, b 2x2, c 2x2
+template &lt;torch::ScalarType dtype&gt;
+__device__ __forceinline__ void mma_m16_n8_k16_b16_b16_b16_noacc(b32 a0, b32 a1, b32 a2, b32 a3, b32 b0, b32 b1, b32&amp; c0, b32&amp; c1){
+    static_assert(dtype == torch::ScalarType::Half || dtype == torch::ScalarType::BFloat16);
+    // d, a, b, c
+    b32 zero = 0;
+    if constexpr(dtype == torch::ScalarType::Half) {
+        asm (
+            &quot;mma.sync.aligned.m16n8k16.row.col.f16.f16.f16.f16 &quot;
+            &quot;{%0, %1}, {%2, %3, %4, %5}, {%6, %7}, {%8, %9};\n\t&quot;
+            : &quot;=r&quot;(c0), &quot;=r&quot;(c1) : &quot;r&quot;(a0), &quot;r&quot;(a1), &quot;r&quot;(a2), &quot;r&quot;(a3), &quot;r&quot;(b0), &quot;r&quot;(b1), &quot;r&quot;(zero), &quot;r&quot;(zero)
+        );
+    } else {
+        b32 temp0, temp1, temp2, temp3;
+        asm (
+            &quot;mma.sync.aligned.m16n8k16.row.col.f32.bf16.bf16.f32 &quot;
+            &quot;{%0, %1, %2, %3}, {%4, %5, %6, %7}, {%8, %9}, {%10, %11, %12, %13};\n\t&quot;
+            : &quot;=r&quot;(temp0), &quot;=r&quot;(temp1), &quot;=r&quot;(temp2), &quot;=r&quot;(temp3) : &quot;r&quot;(a0), &quot;r&quot;(a1), &quot;r&quot;(a2), &quot;r&quot;(a3), &quot;r&quot;(b0), &quot;r&quot;(b1), &quot;r&quot;(zero), &quot;r&quot;(zero), &quot;r&quot;(zero), &quot;r&quot;(zero)
+        );
+        asm (&quot;cvt.rn.bf16x2.f32 %0, %1, %2;\n\t&quot; : &quot;=r&quot;(c0) : &quot;r&quot;(temp1), &quot;r&quot;(temp0));
+        asm (&quot;cvt.rn.bf16x2.f32 %0, %1, %2;\n\t&quot; : &quot;=r&quot;(c1) : &quot;r&quot;(temp3), &quot;r&quot;(temp2));
+    }
+}
+
+// a 4x2, b 4x2, c 4x2
+template &lt;torch::ScalarType dtype&gt;
+__device__ __forceinline__ void mma_m16_n16_k16_b16_b16_b16_noacc(b32 a0, b32 a1, b32 a2, b32 a3, b32 b0, b32 b1, b32 b2, b32 b3, b32&amp; c0, b32&amp; c1, b32&amp; c2, b32&amp; c3){
+    mma_m16_n8_k16_b16_b16_b16_noacc&lt;dtype&gt;(a0, a1, a2, a3, b0, b1, c0, c1);
+    mma_m16_n8_k16_b16_b16_b16_noacc&lt;dtype&gt;(a0, a1, a2, a3, b2, b3, c2, c3);
+}
+
+__device__ __forceinline__ void matrix_transpose_m8_n8_b16_inplace(b32&amp; a0) {
+    asm (
+        &quot;movmatrix.sync.aligned.m8n8.trans.b16 &quot;
+        &quot;%0, %1;\n\t&quot;
+        : &quot;=r&quot;(a0) : &quot;r&quot;(a0)
+    );
+}
+</div></code></pre>
+
+</body>
+</html>
