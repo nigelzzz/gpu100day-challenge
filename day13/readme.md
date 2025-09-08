@@ -36,10 +36,12 @@
 3. 第四行會把 block 裡面每個 value 都 除以 2^shared_exp
 ## algo 2
 ![alt text](image-3.png)
-- 目標 會是要讓 quantize 之後的 value, 在 fp4 裡面平均分布
+- 加入 stochastic rounding, 是因為 
+  - 在格點之間隨機捨入，期望等於原值
 - dithering 
 - 解決 algo1 的 unbiased 問題 
     - reduce scale. x * 3/4 　( 因為 fp4 最大 value 有可能會介於 6 ~ 8 之間, 這樣就會有機率 round 到 8, 8 是 overflow 所以會需要把 value縮小成 6/8 = 3/4) 
+- stochastic rounding 在硬體是蠻常見並且實做快速的作法, 在 cutlass 可以看到相關實做
 ## algo 3
 ![alt text](image-4.png)
 - 使用 random hadamard transform 可以把 outlier 抹平, 之後在用 逆矩陣 轉回來.
