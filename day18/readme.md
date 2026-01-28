@@ -66,6 +66,8 @@ Requirements:
 
 # benchmark
 
+- platforam: rtx 5060 16g
+
 | Metric           | CuTeDSL Python         | CUDA C++              |
 |------------------|------------------------|-----------------------|
 | Single kernel    | 666 GB/s (0.025 ms)    | 491 GB/s (0.034 ms)   |
